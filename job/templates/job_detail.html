@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ job.title }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
 </head>
 <body>
     <div class="container mt-4">
-        <h1>{{ job.title }}</h1>
-        <h4>{{ job.company }}</h4>
+        <h1> {{ job.title }}</h1>
+        <h4>Company: </span>{{ job.company_name }}</h4>
         <p><strong>Location:</strong> {{ job.location }}</p>
         <p><strong>Salary:</strong> ${{ job.salary }}</p>
         <p><strong>Job Type:</strong> {{ job.job_type }}</p>

@@ -10,6 +10,7 @@
 <body>
     <div class="container mt-4">
         <h1 class="text-center">Job Listings</h1>
+        <a href="{% url 'add_job' %}" class="btn btn-primary mb-3">Post a Job</a>
         <div class="row">
             {% for job in jobs %}
                 <div class="col-md-4">
