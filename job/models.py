@@ -19,6 +19,15 @@ class Job(models.Model):
     def __str__(self):
         return self.title
     
+class JobApplication(models.Model):
+    job = models.ForeignKey(Job, on_delete= models.CASCADE)
+    applicant_name = models.CharField(max_length= 100)
+    email = models.EmailField()
+    resume = models.FileField(upload_to='resume/')
+    cover_letter = models.TextField()
+    applied_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f'{self.applicant_name} - {self.job.title}'
 
 

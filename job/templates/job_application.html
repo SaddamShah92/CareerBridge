@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-3">
+    <h2 class="mb-3">Applications for {{ job.title }}</h2>
+
+    {% if applications %}
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Applicant Name</th>
+                    <th>Email</th>
+                    <th>Resume</th>
+                    <th>Cover Letter</th>
+                    <th>Applied At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for application in applications %}
+                <tr>
+                    <td>{{ application.applicant_name }}</td>
+                    <td>{{ application.email }}</td>
+                    <td>
+                        <a href="{{ application.resume.url }}" class="btn btn-primary btn-sm" target="_blank">View Resume</a>
+                    </td>
+                    <td>{{ application.cover_letter }}</td>
+                    <td>{{ application.applied_at }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="text-muted">No applications received yet.</p>
+    {% endif %}
+</div>
+
+{% endblock %}
