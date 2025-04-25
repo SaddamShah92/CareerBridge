@@ -26,6 +26,7 @@ class JobApplication(models.Model):
     resume = models.FileField(upload_to='resume/')
     cover_letter = models.TextField()
     applied_at = models.DateTimeField(auto_now_add=True)
+    is_shortlisted = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.applicant_name} - {self.job.title}'

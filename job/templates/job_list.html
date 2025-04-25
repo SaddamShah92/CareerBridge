@@ -4,11 +4,20 @@
 
 {% load static %}
 
-
 <div class="container mt-3">
     <h1 class="text-center">Job Listings</h1>
 
-    <a href="{% url 'add_job' %}" class="btn btn-primary mb-3">Post Job</a>
+    {% if user.is_authenticated %}
+        {% if user.userprofile.role == 'hr' %}
+        <a href="{% url 'post_job' %}" class="btn btn-success mb-3">Post a Job</a>
+        <a href="{% url 'all_applications' %}" class="btn btn-secondary float-end">All Applications</a>
+        {% elif user.userprofile.role == 'user' %}
+        <a href="#" class="btn btn-primary mb-3">My Applications</a>
+        {% endif %}
+    {% endif %}
+
+
+
     <div class="row">
         {% for job in jobs %}
         <div class="col-md-4">

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'job',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -142,4 +143,5 @@ MESSAGE_TAGS = {
     
 }
 
-
+LOGIN_URL = 'custom_login'
+LOGIN_REDIRECT_URL = 'user_dashboard'  # fallback for normal users

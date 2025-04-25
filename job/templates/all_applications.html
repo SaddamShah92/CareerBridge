@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-3">
+    <h2 class="mb-2 text-center">All Job Applications</h2>
+
+    {% if applications %}
+    <div class="table-responsive shadow-sm rounded p-3 bg-white">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Job Title</th>
+                    <th>Applicant</th>
+                    <th>Email</th>
+                    <th>Resume</th>
+                    <th>Applied At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for application in applications %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td> <a href="{% url 'job_detail' application.job.id %}">{{ application.job.title }} </a> </td>
+                    <td>{{ application.applicant_name }}</td>
+                    <td>{{ application.email }}</td>
+                    <td>
+                        <a href="{{ application.resume.url }}" class="btn btn-primary btn-sm" target="_blank">View Resume</a>
+                    </td>
+                    <td>{{ application.applied_at }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'job_list' %}" class="btn btn-secondary">Back to Jobs</a>
+    </div>
+    {% else %}
+    <p class="text-center mt-4 text-muted">No applications found.</p>
+    {% endif %}
+
+    
+</div>
+
+{% endblock %}
