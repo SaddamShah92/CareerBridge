@@ -4,6 +4,8 @@
 {% block content %}
 <div class="container mt-3">
     <h2 class="mb-2 text-center">All Job Applications</h2>
+    
+    
 
     {% if applications %}
     <div class="table-responsive shadow-sm rounded p-3 bg-white">
@@ -34,6 +36,9 @@
             </tbody>
         </table>
         <a href="{% url 'job_list' %}" class="btn btn-secondary">Back to Jobs</a>
+        <a href="{% url 'all_shortlisted_applicants' %}" class="btn btn-success">
+            View Shortlisted Candidates
+        </a>
     </div>
     {% else %}
     <p class="text-center mt-4 text-muted">No applications found.</p>

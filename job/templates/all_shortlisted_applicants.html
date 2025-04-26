@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-3">
+    <h2 class="text-center mb-2">All Shortlisted Applicants</h2>
+
+    {% if shortlisted %}
+    <div class="table-responsive bg-white p-4 shadow-sm rounded">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Job Title</th>
+                    <th>Applicant</th>
+                    <th>Email</th>
+                    <th>Resume</th>
+                    <th>Cover Letter</th>
+                    <th>Applied At</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for applicant in shortlisted %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ applicant.job.title }}</td>
+                    <td>{{ applicant.applicant_name }}</td>
+                    <td>{{ applicant.email }}</td>
+                    <td>
+                        <a href="{{ applicant.resume.url }}" class="btn btn-sm btn-primary" target="_blank">View Resume</a>
+                    </td>
+                    <td>{{ applicant.cover_letter|truncatewords:20 }}</td>
+                    <td>{{ applicant.applied_at }}</td>
+                    <td><form action="{% url 'unshortlist_applicant' applicant.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Unshortlist</button>
+                    </form></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <p class="text-center text-muted">No shortlisted applicants found.</p>
+    {% endif %}
+
+    <div class="text-center mt-4">
+        <a href="{% url 'all_applications' %}" class="btn btn-secondary">Back to All Applications</a>
+    </div>
+</div>
+
+{% endblock %}

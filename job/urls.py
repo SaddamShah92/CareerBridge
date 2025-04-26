@@ -12,6 +12,10 @@ urlpatterns = [
     path('contact/', views.contact, name = 'contact'),
     path('all_applications/', views.all_applications, name = 'all_applications'),
     path('application/<int:application_id>/shortlist/', views.toggle_shortlist, name='toggle_shortlist'),
+    path('shortlisted/', views.all_shortlisted_applicants, name='all_shortlisted_applicants'),
+    path('application/<int:application_id>/unshortlist/', views.unshortlist_applicant, name='unshortlist_applicant'),
+
+
 ]
 
 

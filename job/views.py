@@ -5,6 +5,7 @@ from .models import Job, JobApplication
 from django.contrib import messages
 from .forms import JobForm, JobApplicationForm
 from accounts.models import UserProfile
+from django.views.decorators.http import require_POST
 
 
 # Utility functions for role checking
@@ -106,3 +107,15 @@ def toggle_shortlist(request, application_id):
     application.save()
     return redirect('job_applications', job_id=application.job.id)
 
+# For Shortlisted Applications
+def all_shortlisted_applicants(request):
+    shortlisted = JobApplication.objects.filter(is_shortlisted=True)
+    return render(request, 'all_shortlisted_applicants.html', {'shortlisted': shortlisted})
+
+# For Unshortlist Applications from Shortlisted Template
+@require_POST
+def unshortlist_applicant(request, application_id):
+    application = get_object_or_404(JobApplication, id=application_id)
+    application.is_shortlisted = False
+    application.save()
+    return redirect('all_shortlisted_applicants')
