@@ -14,7 +14,8 @@ urlpatterns = [
     path('application/<int:application_id>/shortlist/', views.toggle_shortlist, name='toggle_shortlist'),
     path('shortlisted/', views.all_shortlisted_applicants, name='all_shortlisted_applicants'),
     path('application/<int:application_id>/unshortlist/', views.unshortlist_applicant, name='unshortlist_applicant'),
-
+    path('my_applications/', views.my_applications, name='my_applications'),
+    path('delete_application/<int:application_id>/', views.delete_application, name='delete_application'),
 
 ]
 

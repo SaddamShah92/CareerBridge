@@ -3,7 +3,6 @@ from django.contrib import messages
 from .forms import CustomUserRegistrationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import CustomUserRegistrationForm
 from .models import UserProfile
 
 # User Registration View
@@ -17,7 +16,7 @@ def registration(request):
 
             login(request, user)
             messages.success(request, "You have registered successfully!")
-            return redirect('user_dashboard')  # We'll handle where to send them next
+            return redirect('job_list')  # We'll handle where to send them next
         else:
             messages.error(request, "Registration failed. Please check the form.")
     else:

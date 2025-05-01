@@ -44,7 +44,7 @@ def post_job(request):
             messages.success(request, 'Job posted successfully!')
             return redirect('job_list')
         else:
-            messages.error(request, "There was an error posting our job.")
+            messages.error(request, "There was an error posting your job.")
     else:
         form = JobForm()    
 
@@ -63,7 +63,7 @@ def apply_for_job(request, job_id):
         if form.is_valid():
             application = form.save(commit=False)
             application.job = job
-            application.applicant = request.user
+            application.user = request.user
             application.save()
             messages.success(request, "Your application has been submitted successfully!")
             return redirect('job_list')
@@ -82,6 +82,20 @@ def job_applications(request, job_id):
     applications = JobApplication.objects.filter(job = job)
     return render(request, 'job_application.html', {'job': job, 'applications': applications})
 
+# View My Applications (User only)
+@login_required
+def my_applications(request):
+    applications = JobApplication.objects.filter(user=request.user)
+    return render(request, 'my_applications.html', {'applications': applications})
+
+# Delete My Applications
+@login_required
+def delete_application(request, application_id):
+    application = get_object_or_404(JobApplication, id=application_id)
+    application.delete()
+    messages.success(request, "Application deleted successfully.")
+    return redirect('my_applications') 
+
 # For About Page
 def about_us(request):
     return render(request, 'about_us.html')
@@ -92,7 +106,7 @@ def contact(request):
     return render(request, 'contact.html')
 
 
-# For All Applications (Used by HR)
+# For All Applications (Used by HR)                                                                                                                          
 @login_required
 def all_applications(request):
     applications = JobApplication.objects.select_related('job').order_by('-applied_at')
