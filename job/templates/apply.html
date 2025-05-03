@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6"> <!-- Adjust form width -->
             <div class="card shadow-lg p-4">
-                <h3 class="text-center mb-2">Apply for {{ job.title }}</h3>
+                <h3 class="text-center mb-2 text-primary">Apply for {{ job.title }}</h3>
 
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}

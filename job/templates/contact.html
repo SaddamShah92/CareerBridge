@@ -1,37 +1,68 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-3">
+<div class="container py-3">
     <div class="row justify-content-center">
-        <div class="col-lg-6">
-            <h1 class="text-center mb-4">Contact Us</h1>
-            
-            <div class="card shadow p-4">
-                <p><strong>Email:</strong> <a href="mailto:support@jobboard.com">support@jobboard.com</a></p>
-                <p><strong>Phone:</strong> <a href="tel:+123456789">+123456789</a></p>
-                
-                <h4 class="mt-4">Send Us a Message</h4>
-                <form method="post">
-                    {% csrf_token %}
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Your Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+        <div class="col-lg-8">
+            <h1 class="fw-bold text-primary text-center">Contact Us</h1>
+            <div class="card border-0 shadow-lg rounded-4">
+                <div class="row g-0 mt-2">
+                    <!-- Contact Info Section -->
+                    <div class="col-md-5 bg-primary text-white p-4 rounded-start">
+                        <div class="mb-4">
+                            <h4 class="fw-bold">Get in Touch</h4>
+                            <p class="small">We’re here to answer your questions or provide help with our services.</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="bg-white text-primary rounded-circle d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
+                                    <i class="bi bi-envelope-fill fs-5"></i>
+                                </div>
+                                <span class="ms-2">Email</span>
+                            </div>
+                            <a href="mailto:support@jobboard.com" class="text-white text-decoration-none ms-5 d-block small">support@jobboard.com</a>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="bg-white text-primary rounded-circle d-flex justify-content-center align-items-center" style="width: 40px; height: 40px;">
+                                    <i class="bi bi-telephone-fill fs-5"></i>
+                                </div>
+                                <span class="ms-2">Phone</span>
+                            </div>
+                            <a href="tel:+123456789" class="text-white text-decoration-none ms-5 d-block small">+1 (234) 567-89</a>
+                        </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Your Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
+                    <!-- Form Section -->
+                    <div class="col-md-7 p-4">
+                        <h5 class="mb-3">Send Us a Message</h5>
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control rounded-3" id="name" name="name" placeholder="Enter your name" required>
+                            </div>
 
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-                    </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Your Email</label>
+                                <input type="email" class="form-control rounded-3" id="email" name="email" placeholder="Enter your email" required>
+                            </div>
 
-                    <button type="submit" class="btn btn-primary w-100">Submit</button>
-                </form>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control rounded-3" id="message" name="message" rows="4" placeholder="Write your message..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 rounded-3">Submit</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
 {% endblock %}

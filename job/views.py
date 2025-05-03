@@ -6,6 +6,7 @@ from django.contrib import messages
 from .forms import JobForm, JobApplicationForm
 from accounts.models import UserProfile
 from django.views.decorators.http import require_POST
+from .forms import JobForm 
 
 
 # Utility functions for role checking
@@ -82,6 +83,32 @@ def job_applications(request, job_id):
     applications = JobApplication.objects.filter(job = job)
     return render(request, 'job_application.html', {'job': job, 'applications': applications})
 
+# For Update the Job List (Used by HR)
+def job_update(request, pk):
+    job = get_object_or_404(Job, pk=pk)
+    if request.user.userprofile.role != 'hr':
+        return redirect('job_detail', pk=pk)
+
+    if request.method == 'POST':
+        form = JobForm(request.POST, instance=job)
+        if form.is_valid():
+            form.save()
+            return redirect('job_detail', job_id=job.pk)
+    else:
+        form = JobForm(instance=job)
+    return render(request, 'job_form.html', {'form': form, 'job': job})
+
+# For Delete the Job List (Used by HR)
+def job_delete(request, pk):
+    job = get_object_or_404(Job, pk=pk)
+    if request.user.userprofile.role != 'hr':
+        return redirect('job_detail', pk=pk)
+
+    if request.method == 'POST':
+        job.delete()
+        return redirect('job_list')
+    return render(request, 'job_confirm_delete.html', {'job': job})
+
 # View My Applications (User only)
 @login_required
 def my_applications(request):
@@ -133,3 +160,9 @@ def unshortlist_applicant(request, application_id):
     application.is_shortlisted = False
     application.save()
     return redirect('all_shortlisted_applicants')
+
+# About Developer
+def developer(request):
+    return render(request, 'developer.html')
+
+

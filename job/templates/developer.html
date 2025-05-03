@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container py-3">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            <!-- Profile Header -->
+            <div class="text-center mb-5">
+                <img src="https://avatars.githubusercontent.com/u/129947606?s=200&v=4"
+                     alt="Syed Saddam Shah"
+                     class="rounded-circle shadow border mb-3"
+                     style="width: 150px; height: 150px; object-fit: cover;">
+                <h1 class="fw-bold text-primary">Syed Saddam Shah</h1>
+                <p class="text-muted">Backend Developer | Python & Django Enthusiast</p>
+                <div class="d-flex justify-content-center gap-3 mt-3">
+                    <a href="mailto:saddamshah415@gmail.com" class="btn btn-outline-secondary btn-sm">Email</a>
+                    <a href="https://github.com/SaddamShah92" target="_blank" class="btn btn-outline-dark btn-sm">GitHub</a>
+                    <a href="https://www.linkedin.com/in/syed-saddam-shah-a03229197" target="_blank" class="btn btn-outline-primary btn-sm">LinkedIn</a>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <section class="mb-5">
+                <h3 class="fw-semibold">About Me</h3>
+                <p class="mt-3">
+                    I'm Saddam, a Computer Science graduate with a master's degree from Virtual University of Pakistan. I have a passion for coding, especially in Python and Django. My journey in the tech world has been driven by curiosity and a desire to build efficient and scalable web applications.
+                </p>
+            </section>
+
+            <!-- Work Experience -->
+            <section class="mb-5">
+                <h3 class="fw-semibold">Work Experience</h3>
+                <p class="mt-3">
+                    At TransData Internationals in Lahore, Pakistan, I have been involved in ensuring software quality through rigorous testing. Our projects span various domains, with a significant focus on AI-related applications, including:
+                </p>
+                <ul>
+                    <li>Document Automation AI Software</li>
+                    <li>RPA (Robotic Process Automation) AI Software</li>
+                    <li>Tax Certificate Generator React Web Application</li>
+                </ul>
+            </section>
+
+            <!-- Final Year Project -->
+            <section class="mb-5">
+                <h3 class="fw-semibold">Final Year Project</h3>
+                <p class="mt-3">
+                    For my university's Final Year Project, I developed a web application for data scraping. It extracted product data from e-commerce websites like Amazon and Daraz, presenting it on a user-friendly webpage. This project enhanced my skills in web development and data management, providing hands-on experience with web scraping techniques.
+                </p>
+            </section>
+
+            <!-- Skills -->
+            <section class="mb-5">
+                <h3 class="fw-semibold">Technical Skills</h3>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <ul>
+                            <li>Python Programming</li>
+                            <li>Django Framework</li>
+                            <li>RESTful API Development</li>
+                            <li>Database Management (PostgreSQL, MySQL)</li>
+                            <li>Version Control (Git)</li>
+                            <li>Frontend Technologies (HTML, CSS, JavaScript, Bootstrap)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li>Authentication and Authorization</li>
+                            <li>Testing (unittest, pytest)</li>
+                            <li>Deployment (Heroku, AWS, Docker)</li>
+                            <li>Security</li>
+                            <li>Performance Optimization</li>
+                            <li>Debugging and Troubleshooting</li>
+                            <li>Agile Methodologies</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Personal Interests -->
+            <section class="mb-5">
+                <h3 class="fw-semibold">Personal Interests</h3>
+                <p class="mt-3">
+                    Beyond coding, I enjoy long walks in nature, exercising, and brainstorming new ideas. I believe in continuous learning and am always eager to take on new challenges that push my boundaries.
+                </p>
+            </section>
+
+            <!-- Contact Information -->
+            <section class="mb-5">
+                <h3 class="fw-semibold">Contact Information</h3>
+                <ul class="list-unstyled mt-3">
+                    <li><strong>Email:</strong> <a href="mailto:saddamshah415@gmail.com">saddamshah415@gmail.com</a></li>
+                    <li><strong>Phone:</strong> +92 3044687200</li>
+                    <li><strong>Location:</strong> Lahore, Pakistan</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

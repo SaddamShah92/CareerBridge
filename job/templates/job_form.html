@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-3">
+    <h2 class="mb-4 text-center text-primary">Edit Job: {{ job.title }}</h2>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <form method="post" class="mt-3">
+                        {% csrf_token %}
+
+                        <!-- Job Title -->
+                        <div class="mb-2 fw-bold">
+                            <label for="id_title" class="form-label">Job Title</label>
+                            <input type="text" name="title" id="id_title" value="{{ form.title.value }}" class="form-control" placeholder="Enter job title" required>
+                        </div>
+
+                        <!-- Company Name -->
+                        <div class="mb-2 fw-bold">
+                            <label for="id_company_name" class="form-label">Company Name</label>
+                            <input type="text" name="company_name" id="id_company_name" value="{{ form.company_name.value }}" class="form-control" placeholder="Enter company name" required>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="mb-2 fw-bold">
+                            <label for="id_location" class="form-label">Location</label>
+                            <input type="text" name="location" id="id_location" value="{{ form.location.value }}" class="form-control" placeholder="Enter job location" required>
+                        </div>
+
+                        <!-- Salary -->
+                        <div class="mb-2 fw-bold">
+                            <label for="id_salary" class="form-label">Salary</label>
+                            <input type="number" name="salary" id="id_salary" value="{{ form.salary.value }}" class="form-control" placeholder="Enter salary (optional)">
+                        </div>
+
+                        <!-- Job Type -->
+                        <div class="mb-2 fw-bold">
+                            <label for="id_job_type" class="form-label">Job Type</label>
+                            <select name="job_type" id="id_job_type" class="form-select">
+                                <option value="Full-time" {% if form.job_type.value == "Full-time" %}selected{% endif %}>Full-time</option>
+                                <option value="Part-time" {% if form.job_type.value == "Part-time" %}selected{% endif %}>Part-time</option>
+                                <option value="Remote" {% if form.job_type.value == "Remote" %}selected{% endif %}>Remote</option>
+                                <option value="Internship" {% if form.job_type.value == "Internship" %}selected{% endif %}>Internship</option>
+                            </select>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-2 fw-bold">
+                            <label for="id_description" class="form-label">Job Description</label>
+                            <textarea name="description" id="id_description" class="form-control" rows="3" placeholder="Enter job details">{{ form.description.value }}</textarea>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+                            <button type="submit" class="btn btn-success">Save Changes</button>
+                            <a href="{% url 'job_detail' job.id %}" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
