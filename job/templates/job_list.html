@@ -17,6 +17,18 @@
     </div>
 </div>
 
+<!-- Search Bar -->
+<div class="container mb-4">
+    <form method="get" action="{% url 'job_list' %}">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control form-control-lg"
+                   placeholder="Search jobs by title or location..."
+                   value="{{ query|default:'' }}">
+            <button type="submit" class="btn btn-primary btn-lg">Search</button>
+        </div>
+    </form>
+</div>
+
 <!-- Job Listings -->
 <div class="container">
     {% if jobs %}
@@ -48,6 +60,36 @@
         </div>
         {% endfor %}
     </div>
+
+    <!-- Pagination -->
+    <div class="mt-5 d-flex justify-content-center">
+        <nav>
+            <ul class="pagination">
+                {% if jobs.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ jobs.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">Previous</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled"><span class="page-link">Previous</span></li>
+                {% endif %}
+
+                {% for num in jobs.paginator.page_range %}
+                <li class="page-item {% if jobs.number == num %}active{% endif %}">
+                    <a class="page-link" href="?page={{ num }}{% if query %}&q={{ query }}{% endif %}">{{ num }}</a>
+                </li>
+                {% endfor %}
+
+                {% if jobs.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ jobs.next_page_number }}{% if query %}&q={{ query }}{% endif %}">Next</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled"><span class="page-link">Next</span></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+
     {% else %}
     <div class="text-center py-5">
         <h4 class="text-muted">🚧 No jobs found</h4>

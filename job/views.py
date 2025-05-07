@@ -7,6 +7,8 @@ from .forms import JobForm, JobApplicationForm
 from accounts.models import UserProfile
 from django.views.decorators.http import require_POST
 from .forms import JobForm 
+from django.core.paginator import Paginator
+from django.db.models import Q
 
 
 # Utility functions for role checking
@@ -22,8 +24,24 @@ def is_admin(user):
 
 #  Unified Job List View
 def job_list(request):
+    query = request.GET.get('q', '')
     jobs = Job.objects.all().order_by('-date_of_posting')
-    return render(request, 'job_list.html', {'jobs': jobs})
+
+    if query:
+        jobs = jobs.filter(
+            Q(title__icontains=query) |
+            Q(location__icontains=query) |
+            Q(company_name__icontains=query)
+        )
+
+    paginator = Paginator(jobs, 9)  # Show 9 jobs per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'job_list.html', {
+        'jobs': page_obj,
+        'query': query
+    })
 
 #  Job Detail View
 def job_detail(request, job_id):
