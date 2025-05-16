@@ -132,10 +132,12 @@ admin	Full access via Django admin panel
 ```
 ```
 ### 🧪 Sample Test Accounts
-Role	Username	Password
-HR	       Hr     	Hr@1234
-User	  User	    User@123456
-Admin	Created via createsuperuser	
+
+| Role  | Username | Password     |
+|-------|----------|--------------|
+| HR    | Hr       | Hr@1234      |
+| User  | User     | User@123456  |
+| Admin | (Created via `createsuperuser`) | - |
 
 ```
 ```
