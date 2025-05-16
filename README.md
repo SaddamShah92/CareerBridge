@@ -153,12 +153,14 @@ URL	View	Purpose
 ```
 
 ### 📸 Screenshots
-Place screenshots under static/screenshots/ and embed them like:
-
 
 ![Homepage](static/screenshots/home.png)
+![Homepage2](static/screenshots/home2.png)
 ![Login](static/screenshots/login.png)
-![Dashboard](static/screenshots/dashboard.png)
+![Register](static/screenshots/register.png)
+![About](static/screenshots/about.png)
+![Contact](static/screenshots/contact.png)
+
 
 ```
 ```
@@ -182,7 +184,6 @@ This project is intended for educational purposes. You are welcome to use and mo
 ### 🙌 Credits
 
 Developed by Syed Saddam Shah
-Mentorship and code review by ChatGPT (Senior Developer Role)
 
 🔗 GitHub Repo
 👉 Click to view the repo
