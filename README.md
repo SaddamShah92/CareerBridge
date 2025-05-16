@@ -132,9 +132,9 @@ admin	Full access via Django admin panel
 ```
 ```
 ### 🧪 Sample Test Accounts
-Role	Email	Password
-HR	hr@example.com	hr1234
-User	user@example.com	user1234
+Role	Username	Password
+HR	       Hr     	Hr@1234
+User	  User	    User@123456
 Admin	Created via createsuperuser	
 
 ```
@@ -156,6 +156,11 @@ URL	View	Purpose
 
 ![Homepage](static/screenshots/home.png)
 ![Homepage2](static/screenshots/home2.png)
+![HR_Role](static/screenshots/Hr_role.png)
+![Detail](static/screenshots/job_detailHr.png)
+![Application](static/screenshots/Application.png)
+![User](static/screenshots/User.png)
+![My Applications](static/screenshots/myapp.png)
 ![Login](static/screenshots/login.png)
 ![Register](static/screenshots/register.png)
 ![About](static/screenshots/about.png)
