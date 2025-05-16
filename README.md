@@ -157,7 +157,7 @@ URL	View	Purpose
 ![Homepage](static/screenshots/home.png)
 ![Homepage2](static/screenshots/home2.png)
 ![HR_Role](static/screenshots/Hr_role.png)
-![Detail](static/screenshots/job_detailHr.png)
+![Detail](static/screenshots/Job_detailHr.png)
 ![Application](static/screenshots/Application.png)
 ![User](static/screenshots/User.png)
 ![My Applications](static/screenshots/myapp.png)
